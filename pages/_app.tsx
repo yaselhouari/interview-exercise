@@ -1,3 +1,4 @@
+import React from 'react';
 import { ChakraProvider, Stack } from "@chakra-ui/react";
 import type { AppProps } from "next/app";
 import Head from "next/head";
