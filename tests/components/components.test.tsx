@@ -4,8 +4,8 @@ import { ChakraProvider } from "@chakra-ui/react"
 import { QueryClient, QueryClientProvider } from 'react-query';
 import ShowList from '../../components/ShowList';
 import ShowItem from '../../components/ShowItem';
+import ShowItemDetails from "../../components/ShowItemDetails";
 import { show, shows } from '../api/mockedData';
-import {Filter} from '../../pages/index';
 import axios from 'axios';
 jest.mock('axios');
 const mockedAxios = axios as jest.Mocked<typeof axios>;
@@ -56,3 +56,32 @@ describe('ShowItem tests', () => {
     expect(getByText(show.title)).toBeInTheDocument();
   });
 }); 
+
+
+
+
+describe("ShowItemDetails", () => {
+    const movieItem = shows[0];
+    const tvShowItem = shows[1]
+  it("renders movie details correctly", () => {
+    render(
+      <ChakraProvider>
+        <ShowItemDetails item={movieItem} />
+      </ChakraProvider>
+    );
+    expect(screen.getByText(movieItem.title)).toBeInTheDocument();
+    expect(screen.getByText(`Duration: ${movieItem.duration} min`)).toBeInTheDocument();
+  });
+
+  it("renders tv show details correctly", () => {
+    render(
+      <ChakraProvider>
+        <ShowItemDetails item={tvShowItem} />
+      </ChakraProvider>
+    );
+    expect(screen.getByText(tvShowItem.title)).toBeInTheDocument();
+    expect(screen.getByText(`Last aired date: ${tvShowItem.last_aired_date}`)).toBeInTheDocument();
+    expect(screen.getByText(`Season: ${tvShowItem.season}`)).toBeInTheDocument();
+    expect(screen.getByText(`Number of episodes: ${tvShowItem.number_episodes}`)).toBeInTheDocument();
+  });
+});
