@@ -10,6 +10,8 @@ const Home = () => {
   const handleFilterChange = (event) => {
     event.target.value === 'all'? setFilter('all') :
     setFilter(event.target.value);
+    setLoading(true);
+    setShows(undefined);
   };
   const {isLoading, data, error} = useMarvelShowsQuery(filter);
   useEffect(() => {
@@ -17,14 +19,10 @@ const Home = () => {
       setShows(data);
       setLoading(false);
     }
-  }, [isLoading, data, error])
-  if(loading) {
-
-  return <Text>Loading...</Text>;
-  }
-  else return <div>
+  }, [isLoading, data, error, filter])
+  return <div>
     <Filter handleFilterChange={handleFilterChange} selectedFilter={filter} />
-    <ShowList shows={shows} /></div>
+    <ShowList shows={shows} loading={loading}/></div>
 };
 export const Filter = ({handleFilterChange, selectedFilter}) => {
   return (
