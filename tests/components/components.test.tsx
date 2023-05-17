@@ -1,9 +1,12 @@
-import { ChakraProvider } from "@chakra-ui/react";
-import { render, screen, waitFor } from '@testing-library/react';
-import axios from 'axios';
+import React from 'react';
+import { render, waitFor, screen, fireEvent } from '@testing-library/react';
+import { ChakraProvider } from "@chakra-ui/react"
 import { QueryClient, QueryClientProvider } from 'react-query';
 import ShowList from '../../components/ShowList';
-import { shows } from '../api/mockedData';
+import ShowItem from '../../components/ShowItem';
+import { show, shows } from '../api/mockedData';
+import {Filter} from '../../pages/index';
+import axios from 'axios';
 jest.mock('axios');
 const mockedAxios = axios as jest.Mocked<typeof axios>;
 
@@ -41,3 +44,15 @@ describe('ShowList', () => {
     await waitFor(() => expect(screen.getAllByTestId('show-item')).toHaveLength(shows.length));
   });
 });
+
+describe('ShowItem tests', () => {
+  it('displays the correct show data', () => {
+    const { getByText } = render(
+      <ChakraProvider>
+        <ShowItem show={show} />
+      </ChakraProvider>
+    );
+
+    expect(getByText(show.title)).toBeInTheDocument();
+  });
+}); 
