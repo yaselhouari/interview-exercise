@@ -13,7 +13,15 @@ const ShowList = ({ shows }) => {
 
   return (
     <div>
-      <Select data-testid="filter-select" onChange={handleFilterChange}>
+      <Select 
+        data-testid="filter-select" 
+        onChange={handleFilterChange} 
+        bg="white"
+        color="black"
+        borderColor="gray.300"
+        borderRadius="md"
+        width="200px"
+        marginBottom="1em">
         <option value="all">All</option>
         <option value="movie">Movie</option>
         <option value="tvShow">TV Show</option>
