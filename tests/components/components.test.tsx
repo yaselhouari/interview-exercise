@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, waitFor, screen, fireEvent } from '@testing-library/react';
+import { render, waitFor, screen } from '@testing-library/react';
 import { ChakraProvider } from "@chakra-ui/react"
 import { QueryClient, QueryClientProvider } from 'react-query';
 import ShowList from '../../components/ShowList';
@@ -56,9 +56,6 @@ describe('ShowItem tests', () => {
     expect(getByText(show.title)).toBeInTheDocument();
   });
 }); 
-
-
-
 
 describe("ShowItemDetails", () => {
     const movieItem = shows[0];
