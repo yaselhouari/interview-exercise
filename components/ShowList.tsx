@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
-import { Grid, GridItem, Select } from "@chakra-ui/react";
+import React from 'react';
+import { Grid, GridItem, Text } from "@chakra-ui/react";
 import ShowItem from "./ShowItem";
 
-const ShowList = ({ shows }) => {
+const ShowList = ({ shows, loading }) => {
+  if(loading) {
+    return <Text>Loading...</Text>
+  }
   return (
     <Grid templateColumns="repeat(5, 1fr)" gap={6}>
       {shows.map((show) => (

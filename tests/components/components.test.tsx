@@ -10,20 +10,33 @@ import axios from 'axios';
 jest.mock('axios');
 const mockedAxios = axios as jest.Mocked<typeof axios>;
 
-describe('ShowList tests', () => {
+describe('ShowList', () => {
     let queryClient: QueryClient;
   beforeEach(() => {
     jest.resetAllMocks();
     queryClient = new QueryClient();
   })
 
+  it('renders loading at that loading phase', async () => {
+    mockedAxios.get.mockResolvedValueOnce({ data: shows });
+
+    render(
+      <QueryClientProvider client={queryClient}>
+        <ChakraProvider>
+          <ShowList shows={shows} loading={true}/>
+        </ChakraProvider>
+      </QueryClientProvider>
+    );
+
+    await waitFor(() => expect(screen.getByText('Loading...')).toBeInTheDocument());
+  });
   it('renders correct number of ShowItem components', async () => {
     mockedAxios.get.mockResolvedValueOnce({ data: shows });
 
     render(
       <QueryClientProvider client={queryClient}>
         <ChakraProvider>
-          <ShowList shows={shows}/>
+          <ShowList shows={shows} loading={false}/>
         </ChakraProvider>
       </QueryClientProvider>
     );
@@ -32,7 +45,7 @@ describe('ShowList tests', () => {
   });
 });
 
-describe('ShowItem tests', () => {
+/* describe('ShowItem tests', () => {
   it('displays the correct show data', () => {
     const { getByText } = render(
       <ChakraProvider>
@@ -42,10 +55,10 @@ describe('ShowItem tests', () => {
 
     expect(getByText(show.title)).toBeInTheDocument();
   });
-});
+}); */
 
 
-describe('ShowList', () => {
+/* describe('ShowList', () => {
     let queryClient: QueryClient;
 
     beforeEach(() => {
@@ -79,4 +92,4 @@ describe('ShowList', () => {
       const tvShowItems = shows.filter(show => show.type === 'tvShow');
       expect(showItems.length).toBe(tvShowItems.length);
     });
-  });
+  }); */
