@@ -6,8 +6,8 @@ import ShowList from '@/components/ShowList';
 
 const Home = () => {
   const [loading, setLoading] = useState(true);
+  const [filter, setFilter] = useState('all');
   const [shows, setShows] = useState()
-  const [filter, setFilter] = useState();
   const handleFilterChange = (event) => {
     event.target.value === 'all'? setFilter(undefined) :
     setFilter(event.target.value);
@@ -26,6 +26,11 @@ const Home = () => {
   return <Text>Loading...</Text>;
   }
   else return <div>
+    <Filter handleFilterChange={handleFilterChange} selectedFilter={filter} />
+    <ShowList shows={shows} /></div>
+};
+export const Filter = ({handleFilterChange, selectedFilter}) => {
+  return (
     <Select 
       data-testid="filter-select" 
       onChange={handleFilterChange} 
@@ -35,12 +40,11 @@ const Home = () => {
       borderRadius="md"
       width="200px"
       marginBottom="1em">
-      <option value="all">All</option>
-      <option value="movie">Movie</option>
-      <option value="tvShow">TV Show</option>
+      <option value="all" selected={selectedFilter === 'all'? true: false}>All</option>
+      <option value="movie" selected={selectedFilter === 'movie'? true: false}>Movie</option>
+      <option value="tvShow" selected={selectedFilter === 'tvShow'? true: false}>TV Show</option>
     </Select>
-    <ShowList shows={shows} /></div>
-};
-
+  )
+} 
 export default Home;
 
