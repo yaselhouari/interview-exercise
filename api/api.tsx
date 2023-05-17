@@ -10,11 +10,9 @@ const getMarvelShows = async (type) => {
   }
 };
 
-export const useMarvelShowsQuery = (type) => {
+export const useMarvelShowsQuery = (type: string) => {
 return useQuery(['marvelShows', type], () => getMarvelShows(type));
 };
-
-
 
 const getMarvelShow = async (id: number) => {
   try {
