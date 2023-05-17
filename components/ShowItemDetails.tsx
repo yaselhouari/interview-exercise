@@ -1,10 +1,13 @@
 import React from 'react';
 import { Box, Image, Text, Link } from "@chakra-ui/react";
 
-const ShowItemDetails = ({ item }) => {
+const ShowItemDetails = ({ item, loading }) => {
+  if(loading) {
+    return 'Loading...';
+  }
   return (
     <Box border="1px" borderColor="gray.200" p="5" borderRadius="md" data-testid="show-item-details">
-      <Image src={item.cover_url} alt={item.title} mb="5" />
+      <Image src={item?.cover_url} alt={item.title} mb="5" />
       <Text fontSize="xl" fontWeight="bold" mb="2">{item.title}</Text>
       <Text mb="2">Release date: {item.release_date}</Text>
       {item.type === "movie" ? (
