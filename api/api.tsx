@@ -2,7 +2,7 @@ import { useQuery } from 'react-query';
 
 const getMarvelShows = async (type) => {
   try {
-      const url = type ? `/api/marvel?type=${type}` : '/api/marvel';
+      const url = type && type !== 'all'? `/api/marvel?type=${type}` : '/api/marvel';
       const res = await fetch(url);
       return res.json();
   } catch(e) {

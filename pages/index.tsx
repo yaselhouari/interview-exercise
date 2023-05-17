@@ -1,18 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { Select, Text } from "@chakra-ui/react";
-import { useQuery } from "react-query";
-import { useMarvelShowQuery, useMarvelShowsQuery } from '@/api/api';
-import ShowList from '@/components/ShowList';
+import { useMarvelShowsQuery } from '../api/api';
+import ShowList from '../components/ShowList';
 
 const Home = () => {
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState('all');
   const [shows, setShows] = useState()
   const handleFilterChange = (event) => {
-    event.target.value === 'all'? setFilter(undefined) :
+    event.target.value === 'all'? setFilter('all') :
     setFilter(event.target.value);
-    setLoading(true);
-    setShows(undefined);
   };
   const {isLoading, data, error} = useMarvelShowsQuery(filter);
   useEffect(() => {

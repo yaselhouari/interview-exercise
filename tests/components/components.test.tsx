@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import ShowList from '../../components/ShowList';
 import ShowItem from '../../components/ShowItem';
 import { show, shows } from '../api/mockedData';
+import {Filter} from '../../pages/index';
 import axios from 'axios';
 jest.mock('axios');
 const mockedAxios = axios as jest.Mocked<typeof axios>;
@@ -52,6 +53,7 @@ describe('ShowList', () => {
       render(
         <QueryClientProvider client={queryClient}>
           <ChakraProvider>
+            <Filter handleFilterChange={undefined} selectedFilter={'all'} />
             <ShowList shows={shows} />
           </ChakraProvider>
         </QueryClientProvider>
