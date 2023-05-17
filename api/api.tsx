@@ -1,6 +1,4 @@
 import { useQuery } from 'react-query';
-import axios from 'axios';
-import { Movie, TvShow } from '../data';
 
 const getMarvelShows = async () => {
     try {
