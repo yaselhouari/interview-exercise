@@ -10,17 +10,17 @@ export type Show = {
     saga: string | null;
     directed_by: string | null;
     imdb_id: string;
-  };
+};
   
-  export type Movie = Show & {
+export type Movie = Show & {
     box_office: string;
     duration: number;
     chronology: number;
     post_credit_scenes: number;
-  };
+};
   
-  export type TvShow = Show & {
+export type TvShow = Show & {
     last_aired_date: string | null;
     season: number;
     number_episodes: number;
-  };
+};
