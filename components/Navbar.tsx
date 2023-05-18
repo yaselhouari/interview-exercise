@@ -8,13 +8,11 @@ const Navbar = () => {
   return (
     <Box bg="black" p={4}>
       <Flex justify="space-between" align="center">
-        <NextLink href="/" passHref>
-          <Link>
+          <Link href="/">
             <Text fontSize={fontSize} fontWeight="bold" color="red.500">
               Home
             </Text>
           </Link>
-        </NextLink>
       </Flex>
     </Box>
   );

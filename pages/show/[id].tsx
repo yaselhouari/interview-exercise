@@ -15,9 +15,7 @@ const Show = () => {
             setLoading(false);
         }
     }, [isLoading, data, error]);
-    console.log('data: ', item)
-
-        return <Layout><ShowItemDetails item={item} loading={loading}/></Layout> 
+    return <Layout><ShowItemDetails item={item} loading={loading}/></Layout> 
 };
 
 export default Show;
