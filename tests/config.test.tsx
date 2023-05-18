@@ -13,5 +13,5 @@ describe('Config: testing library', () => {
         render(<div data-testid="textID">text</div>);
         const element = screen.getByTestId('textID');
         expect(element).toHaveTextContent('text');
-      });
+    });
 });
