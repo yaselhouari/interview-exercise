@@ -1,15 +1,11 @@
 import React from 'react';
 import { Grid, GridItem, Text } from "@chakra-ui/react";
 import ShowItem from "./ShowItem";
-import { Spinner, Flex } from "@chakra-ui/react";
+import Loader from './Loader';
 
 const ShowList = ({ shows, loading }) => {
   if(loading) {
-    return (
-      <Flex justifyContent="center" alignItems="center" height="100vh">
-        <Spinner size="xl" color="red.200" />
-      </Flex>
-    );
+    return <Loader />
   }
   return (
     <Grid templateColumns="repeat(5, 1fr)" gap={6} alignItems="stretch">
