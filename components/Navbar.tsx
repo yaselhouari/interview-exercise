@@ -1,6 +1,5 @@
 import React from 'react';
 import { Box, Flex, Text, useBreakpointValue, Link } from '@chakra-ui/react';
-import NextLink from 'next/link';
 
 const Navbar = () => {
   const fontSize = useBreakpointValue({ base: 'md', md: 'lg' });

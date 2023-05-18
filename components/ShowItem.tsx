@@ -1,8 +1,13 @@
 import React, { useState } from 'react';
 import { Box, Image, Text, Link, VStack, Icon } from '@chakra-ui/react';
 import { ExternalLinkIcon } from '@chakra-ui/icons';
+import { Show } from '@/types/types';
 
-const ShowItem = ({ show }) => {
+type ShowItemProps = {
+  show: Show
+}
+
+const ShowItem = ({ show }: ShowItemProps) => {
   const [imgSrc, setImgSrc] = useState(show.cover_url);
   const defaultImage = 'https://upload.wikimedia.org/wikipedia/commons/d/d1/Image_not_available.png';
 

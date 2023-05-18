@@ -2,8 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { Box, Image, Text, Link, VStack, Stack, Icon, useBreakpointValue } from "@chakra-ui/react";
 import { ExternalLinkIcon } from '@chakra-ui/icons';
 import Loader from './Loader';
+import { Show } from '@/types/types';
 
-const ShowItemDetails = ({ item = {}, loading }) => {
+type ShowItemDetailsProps = {
+  item: Show | {},
+  loading: boolean
+}
+
+const ShowItemDetails = ({ item = {}, loading }: ShowItemDetailsProps) => {
   const [imgSrc, setImgSrc] = useState(item.cover_url || '');
   const defaultImage = 'https://upload.wikimedia.org/wikipedia/commons/d/d1/Image_not_available.png';
 

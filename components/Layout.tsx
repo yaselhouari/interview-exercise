@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { ReactChild } from 'react';
 import { Box, Container, useBreakpointValue } from '@chakra-ui/react';
 import Navbar from './Navbar';
 
-const Layout = ({ children }) => {
+type LayoutProps = {
+  children: ReactChild,
+}
+const Layout = ({ children }: LayoutProps) => {
   const variant = useBreakpointValue({ base: "fluid", md: "fixed" });
 
   return (

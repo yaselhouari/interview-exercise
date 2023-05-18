@@ -1,9 +1,11 @@
 import React from 'react';
 import { Select } from "@chakra-ui/react";
+
 type FilterProps = {
     handleFilterChange: () => {},
     selectedFilter: string 
 }
+
 const Filter = ({handleFilterChange, selectedFilter}: FilterProps) => {
     return (
         <Select 

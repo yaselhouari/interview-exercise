@@ -2,8 +2,13 @@ import React from 'react';
 import { Grid, GridItem, Text } from "@chakra-ui/react";
 import ShowItem from "./ShowItem";
 import Loader from './Loader';
+import { Show } from '@/types/types';
 
-const ShowList = ({ shows, loading }) => {
+type ShowListProps = {
+  shows: Show[],
+  loading: boolean
+}
+const ShowList = ({ shows, loading }: ShowListProps) => {
   if(loading) {
     return <Loader />
   }
