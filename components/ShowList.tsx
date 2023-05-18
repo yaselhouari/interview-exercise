@@ -8,7 +8,7 @@ const ShowList = ({ shows, loading }) => {
     return <Loader />
   }
   return (
-    <Grid templateColumns="repeat(5, 1fr)" gap={6} alignItems="stretch">
+    <Grid templateColumns={["repeat(1, 1fr)", "repeat(2, 1fr)", "repeat(3, 1fr)", "repeat(4, 1fr)", "repeat(5, 1fr)"]} gap={6} alignItems="stretch">
       {shows.map((show) => (
         <GridItem key={show.id}>
           <ShowItem show={show}/>
