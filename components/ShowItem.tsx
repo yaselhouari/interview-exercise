@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { Box, Image, Text, LinkBox, LinkOverlay, Icon } from '@chakra-ui/react';
+import { Box, Image, Text, LinkBox, LinkOverlay, Icon, Link } from '@chakra-ui/react';
 import { ExternalLinkIcon } from '@chakra-ui/icons';
-import Link from 'next/link';
 
 const ShowItem = ({ show }) => {
   const [imgSrc, setImgSrc] = useState(show.cover_url);
@@ -50,7 +49,7 @@ const ShowItem = ({ show }) => {
           {show.overview}
         </Text>
         <Box mt={2}>
-          <Link href={`https://www.imdb.com/title/${show.imdb_id}`} isExternal color="yellow.400">
+          <Link href={`https://www.imdb.com/title/${show.imdb_id}`} color="red.400" isExternal mt="5">
             <Icon as={ExternalLinkIcon} mr="2px" />
             View on IMDB
           </Link>

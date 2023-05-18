@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Box, Image, Text, Link, VStack, HStack } from "@chakra-ui/react";
+import { Box, Image, Text, Link, VStack, HStack, Icon } from "@chakra-ui/react";
+import { ExternalLinkIcon } from '@chakra-ui/icons';
 
 const ShowItemDetails = ({ item = {}, loading }) => {
   const [imgSrc, setImgSrc] = useState(item.cover_url || '');
@@ -39,8 +40,10 @@ const ShowItemDetails = ({ item = {}, loading }) => {
         </VStack>
       </HStack>
       <Text mt="5" fontSize="lg">{item.overview}</Text>
-      <Link href={`https://www.imdb.com/title/${item.imdb_id}`} color="red.400" isExternal mt="5">View on IMDB</Link>
-    </Box>
+      <Link href={`https://www.imdb.com/title/${item.imdb_id}`} color="red.400" isExternal mt="5">
+            <Icon as={ExternalLinkIcon} mr="2px" />
+            View on IMDB
+          </Link>    </Box>
   );
 };
 
