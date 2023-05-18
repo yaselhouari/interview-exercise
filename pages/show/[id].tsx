@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useMarvelShowQuery } from '../../api/api';
 import { useRouter } from 'next/router';
 import ShowItemDetails from '@/components/ShowItemDetails';
-
+import Layout from '../../components/Layout';
 const Show = () => {
     const router = useRouter()
     const { id } = router.query
@@ -17,7 +17,7 @@ const Show = () => {
     }, [isLoading, data, error]);
     console.log('data: ', item)
 
-        return <ShowItemDetails item={item} loading={loading}/> 
+        return <Layout><ShowItemDetails item={item} loading={loading}/></Layout> 
 };
 
 export default Show;

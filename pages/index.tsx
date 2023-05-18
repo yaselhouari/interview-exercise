@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useMarvelShowsQuery } from '../api/api';
 import ShowList from '../components/ShowList';
 import Filter from '../components/Filter';
-
+import Layout from '../components/Layout';
 const Home = () => {
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState('all');
@@ -20,9 +20,9 @@ const Home = () => {
       setLoading(false);
     }
   }, [isLoading, data, error, filter])
-  return <div>
+  return <Layout>
     <Filter handleFilterChange={handleFilterChange} selectedFilter={filter} />
-    <ShowList shows={shows} loading={loading}/></div>
+    <ShowList shows={shows} loading={loading}/></Layout>
 };
 
 export default Home;
