@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Box, Image, Text, Link, VStack, HStack, Icon } from "@chakra-ui/react";
 import { ExternalLinkIcon } from '@chakra-ui/icons';
+import { Spinner, Flex } from "@chakra-ui/react";
 
 const ShowItemDetails = ({ item = {}, loading }) => {
   const [imgSrc, setImgSrc] = useState(item.cover_url || '');
@@ -13,9 +14,15 @@ const ShowItemDetails = ({ item = {}, loading }) => {
   const handleError = () => {
     setImgSrc(defaultImage);
   };
+
   if(loading) {
-    return 'Loading...';
+    return (
+      <Flex justifyContent="center" alignItems="center" height="100vh">
+        <Spinner size="xl" color="red.200" />
+      </Flex>
+    );
   }
+
   return (
     <Box border="1px" borderColor="gray.200" p="5" borderRadius="md" bg="blackAlpha.900" color="white" data-testid="show-item-details">
       <HStack spacing="24px">
