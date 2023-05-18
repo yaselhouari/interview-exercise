@@ -1,10 +1,14 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Box, Image, Text, Link, VStack, HStack } from "@chakra-ui/react";
 
-const ShowItemDetails = ({ item, loading }) => {
-  const [imgSrc, setImgSrc] = useState(item?.cover_url);
+const ShowItemDetails = ({ item = {}, loading }) => {
+  const [imgSrc, setImgSrc] = useState(item.cover_url || '');
   const defaultImage = 'https://upload.wikimedia.org/wikipedia/commons/d/d1/Image_not_available.png';
 
+  useEffect(() => {
+    setImgSrc(item.cover_url || defaultImage);
+  }, [item.cover_url]);
+  
   const handleError = () => {
     setImgSrc(defaultImage);
   };
