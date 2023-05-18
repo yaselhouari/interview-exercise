@@ -1,6 +1,6 @@
 import { useQuery } from 'react-query';
 
-const getMarvelShows = async (type) => {
+const getMarvelShows = async (type:string) => {
   try {
       const url = type && type !== 'all'? `/api/marvel?type=${type}` : '/api/marvel';
       const res = await fetch(url);
