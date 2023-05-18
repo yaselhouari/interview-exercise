@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Box, Image, Text, Link, VStack, HStack, Icon } from "@chakra-ui/react";
+import { Box, Image, Text, Link, VStack, Stack, Icon, useBreakpointValue } from "@chakra-ui/react";
 import { ExternalLinkIcon } from '@chakra-ui/icons';
 import Loader from './Loader';
 
@@ -15,14 +15,16 @@ const ShowItemDetails = ({ item = {}, loading }) => {
     setImgSrc(defaultImage);
   };
 
+  const stackDirection = useBreakpointValue({ base: "column", md: "row" });
+
   if(loading) {
     return <Loader />
   }
 
   return (
     <Box border="1px" borderColor="gray.200" p="5" borderRadius="md" bg="blackAlpha.900" color="white" data-testid="show-item-details">
-      <HStack spacing="24px">
-        <Image src={imgSrc} alt={item.title} mb="5" boxSize="300px" objectFit="cover" borderRadius="md" onError={handleError}/>
+      <Stack direction={stackDirection} spacing="24px">
+        <Image src={imgSrc} alt={item.title} mb="5" boxSize={["100%", "300px"]} objectFit="cover" borderRadius="md" onError={handleError}/>
         <VStack align="start" spacing="24px">
           <Text fontSize="2xl" fontWeight="bold">{item.title}</Text>
           <Text>Release date: {item.release_date}</Text>
@@ -41,12 +43,13 @@ const ShowItemDetails = ({ item = {}, loading }) => {
             </>
           )}
         </VStack>
-      </HStack>
+      </Stack>
       <Text mt="5" fontSize="lg">{item.overview}</Text>
       <Link href={`https://www.imdb.com/title/${item.imdb_id}`} color="red.400" isExternal mt="5">
             <Icon as={ExternalLinkIcon} mr="2px" />
             View on IMDB
-          </Link>    </Box>
+      </Link>
+    </Box>
   );
 };
 
