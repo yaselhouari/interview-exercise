@@ -10,7 +10,7 @@ const Home = () => {
   const [shows, setShows] = useState();
   const {isLoading, data, error} = useMarvelShowsQuery(filter);
 
-  const handleFilterChange = (event) => {
+  const handleFilterChange = (event: any) => {
     event.target.value === 'all'? setFilter('all') :
     setFilter(event.target.value);
     setLoading(true);

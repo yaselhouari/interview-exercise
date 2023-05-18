@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, GridItem, Text } from "@chakra-ui/react";
+import { Grid, GridItem } from "@chakra-ui/react";
 import ShowItem from "./ShowItem";
 import Loader from './Loader';
 import { Show } from '@/types/types';

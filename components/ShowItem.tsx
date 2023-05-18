@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Box, Image, Text, Link, VStack, Icon } from '@chakra-ui/react';
+import { Box, Image, Text, Link, Icon } from '@chakra-ui/react';
 import { ExternalLinkIcon } from '@chakra-ui/icons';
 import { Show } from '@/types/types';
 
